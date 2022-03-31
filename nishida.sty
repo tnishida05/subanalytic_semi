@@ -1,0 +1,153 @@
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{mathrsfs}
+\usepackage{dsfont}
+\usepackage{mathtools}
+
+\usepackage{bm}
+\usepackage{amsbsy}
+
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+
+\usepackage{subfiles}
+\usepackage{url}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\hypersetup{
+  setpagesize=false,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=red,
+}
+
+\usepackage{pxrubrica}
+\usepackage{enumerate}
+
+\newcounter{mynum}
+\newcommand{\rnum}[1]{\setcounter{mynum}{#1}\roman{mynum}}
+
+%--tikz
+\usepackage[dvipdfmx]{graphicx,xcolor}
+\usepackage{tikz}
+\usetikzlibrary{intersections,calc,arrows,cd,decorations.pathmorphing}
+%--end_of_tikz
+\usepackage{scalerel}
+
+%--amsthm
+\usepackage{amsthm}
+\newtheoremstyle{mystyle}%   % Name
+{}%                      % Space above
+{}%                      % Space below
+{\normalfont}%           % Body font
+{}%                      % Indent amount
+{\bfseries}%             % Theorem head font
+{}%                      % Punctuation after theorem head
+{ }%                      % Space after theorem head}{ ' '}{ or \newline
+{}%                      % Theorem head spec (can be left empty}{ meaning `normal')
+\theoremstyle{mystyle}
+\newtheorem{thm}{定理}[section]
+\newtheorem{lem}[thm]{補題}
+\newtheorem{cor}[thm]{系}
+\newtheorem{dfn}[thm]{定義}
+\newtheorem{prop}[thm]{命題}
+\newtheorem{sym}[thm]{記号}
+\newtheorem{rem}[thm]{注意}
+\newtheorem{eg}[thm]{例}
+
+\newtheorem*{thm*}{定理}
+\newtheorem*{lem*}{補題}
+\newtheorem*{cor*}{系}
+\newtheorem*{dfn*}{定義}
+\newtheorem*{prop*}{命題}
+\newtheorem*{sym*}{記号}
+\newtheorem*{rem*}{注意}
+\newtheorem*{eg*}{例}
+
+\renewcommand{\proofname}{\bf 証明}
+%%--end_of_amsthm
+
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\renewcommand{\labelenumiii}{(\alph{enumiii})}
+
+\newcommand{\Cech}{\v{C}ech}
+\newcommand{\Hormander}{H\"{o}rmander}
+\newcommand{\Frechet}{Fr\'echet}
+
+\newcommand{\A}{\mathscr{A}}
+\newcommand{\B}{\mathscr{B}}
+\newcommand{\C}{\mathscr{C}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\E}{\mathscr{E}}
+\newcommand{\F}{\mathscr{F}}
+\newcommand{\G}{\mathscr{G}}
+\renewcommand{\L}{\mathscr{L}}
+\newcommand{\N}{\mathscr{N}}
+\renewcommand{\O}{\mathscr{O}}
+\newcommand{\Db}{{\mathscr{D}b}}
+\newcommand{\U}{\mathscr{U}}
+\newcommand{\V}{\mathscr{V}}
+\newcommand{\W}{\mathscr{W}}
+
+\newcommand{\del}{\partial}
+\newcommand{\delbar}{{\bar\partial}}
+\newcommand{\thetabar}{{\bar\vartheta}}
+
+\newcommand{\Ob}{\mathrm{Ob}}
+\newcommand{\Hom}{\mathop{\mathrm{Hom}}\nolimits}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Op}{\mathrm{Op}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\id}{\mathrm{id}}
+
+\renewcommand{\Re}{\mathrm{Re}}
+
+\renewcommand{\Im}{\mathrm{Im}}
+\newcommand{\Coim}{\mathrm{Coim}}
+\newcommand{\Ker}{\mathrm{Ker}}
+\newcommand{\Coker}{\mathrm{Coker}}
+
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\coim}{\mathrm{coim}}
+\renewcommand{\ker}{\mathrm{ker}}
+\newcommand{\coker}{\mathrm{coker}}
+
+\newcommand{\ord}{\mathrm{ord}\,}
+\newcommand{\gr}{\mathrm{gr}}
+
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\singsupp}{\mathrm{sing.\,supp}}
+\newcommand{\Csupp}{{C^\infty\mathchar`-\mathrm{sing.\,supp}}}
+\newcommand{\Asupp}{{\mathscr{A}\mathchar`-\mathrm{sing.\,supp}}}
+\newcommand{\Supp}{\mathrm{Supp}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\dist}{\mathrm{dist}}
+
+\newcommand{\pv}{\mathrm{p.v.}}
+\newcommand{\fp}{\mathrm{f.p.}}
+
+\newcommand{\Log}{\mathrm{Log}\,}
+
+\newcommand{\restr}[2]{\left.#1\right|_{#2}}
+\newcommand{\cl}[1]{{\overline{#1}}}
+
+\def\i<#1>{\langle #1 \rangle}
+\def\I<#1>{\left\langle #1 \right\rangle}
+
+\newcommand{\relmiddle}[1]{\mathrel{}\middle#1\mathrel{}}
+
+\newcommand{\ilim}[1][]{\mathop{\varinjlim}\limits_{#1}}
+\newcommand{\plim}[1][]{\mathop{\varprojlim}\limits_{#1}}
+\newcommand{\iilim}[1][]{\underset{#1}{`` \mathop{\varinjlim}\limits"}}
+\newcommand{\pplim}[1][]{\underset{#1}{`` \mathop{\varprojlim}\limits"}}
+
+\newcommand{\TODO}{\textcolor{red}{TODO}}
+
+\newcommand{\rchi}{\raisebox{1.5pt}{$\chi$}}

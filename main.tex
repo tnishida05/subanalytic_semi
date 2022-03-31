@@ -1,0 +1,48 @@
+\documentclass[nomag*,a4paper,leqno]{jsarticle}
+\bibliographystyle{jplain}
+\usepackage{nishida}
+
+\numberwithin{thm}{subsection}
+\numberwithin{equation}{subsection}
+
+\usepackage[dvipdfm]{geometry}
+\geometry{
+  truedimen,
+  mag    = 1000,
+  top    = 25truemm,
+  bottom = 25truemm,
+  left   = 25truemm,
+  right  = 25truemm
+}
+
+\title{\vspace{-2.5em}Sheaves on subanalytic sites セミナーノート\vspace{-1em}}
+\date{\vspace{-1em}\today\vspace{-1.5em}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\addtocounter{section}{-1}
+\section{Preface}
+このノートでは,
+R. Prelli,
+Sheaves on Subanalytic Site \cite{book:Prelli}
+を参考にして,
+Subanalytic sitesや,
+その上の層についてまとめる.
+また, 必要に応じて,
+Kashiwara-Schapira\cite{book:KS_sh}, \cite{book:KS_cat}
+を参照する.
+
+\section{Subanalytic set}
+この節では, subanalytic setについて述べる.
+\subfile{contents/01-01}
+
+\section{Sheaves on Sites}
+この節では,
+Kashiwara-Schapira, Ind-sheaves \cite{book:KS_ind}
+も合わせて参照して,
+景(site)上の層について述べる.
+\subfile{contents/02-01}
+
+\bibliography{ref}
+\end{document}

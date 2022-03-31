@@ -1,0 +1,158 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\setcounter{section}{2}
+\setcounter{subsection}{1} \addtocounter{subsection}{-1}
+\subsection{Definition of Sites}
+層は, 位相空間$X$の開集合の圏$\Op(X)$に対して定められる.
+景(site)とは, 任意の圏に対して抽象的な被覆によって位相を入れたもので,
+これにより, 層の概念を拡張できる.
+
+以降, 考える圏は, $\U$-small であり,
+有限の積とファイバー積が存在するものとする.
+このような圏$\C$では,
+射$V\to U$の圏$\C_U$も有限の積とファイバー積が存在する.
+
+また, $\C$が終対象(terminal object)を持てば,
+\begin{center}
+  $\C$ が有限の積とファイバー積を持つ
+  $\iff$
+  $\C$ が有限の射影極限を持つ
+\end{center}
+が成り立つ.
+さらに, このとき, 終対象を$T$として,
+\[
+  X\times Y = X\times_T Y \hspace{1em} (\forall X, Y\in \C)
+\]
+である.
+
+\begin{sym*}
+  射$V\to U$と$S\subset \Ob(C_U)$に対して,
+  \[
+    V\times_U S
+    \coloneqq
+    \left\{
+      V \times_U W \to V
+      \relmiddle{|}
+      W\in S
+      \right\} \subset \Ob(C_V)
+  \]
+  と定める.
+\end{sym*}
+
+\begin{rem*}
+  位相空間$X$とし, $\C = \Ob(X)$とする.
+  このとき,
+  $V,W\in\C_U$に対して,
+  \[
+    V\times_U W = V\cap W
+  \]
+  である.
+\end{rem*}
+
+\begin{dfn}
+  $S_1,S_2\subset \Ob(C_U)$に対して,
+  $S_1$が$S_2$の細分(refinement)とは,
+  任意の$V\to U \in S_1$に対して,
+  ある$V^\prime\to U\in S_2$が存在して,
+  $V\to V^\prime \to U$と分解できることを言う.
+  また, これを$S_1 \preceq S_2$と書く.
+\end{dfn}
+
+\begin{dfn}
+  $\C$上のGrothendieck位相とは,
+  $\Ob(\C_U)$の部分集合の族$\{\Cov(U)\}_{U\in\C}$で,
+  次の公理を満たすものを言う:
+  \begin{enumerate}[(GT1)]
+    \setlength{\itemindent}{1em} \setlength{\labelsep}{1em}
+    \item $\left\{ \id_U : U\to U \right\} \in \Cov(U)$である.
+    \item $S_1, S_2\subset\C_U$とする.
+      $S_1\in\Cov(U)$かつ
+      $S_1\preceq S_2$ならば,
+      $S_2\in\Cov(U)$である.
+    \item $S\in\Cov(U)$ならば,
+      任意の$V\to U$に対して,
+      $V\times_U S\in \Cov(V)$である.
+    \item $S_1,S_2\subset\Ob(\C_U)$が,
+      $S_1\in\Cov(U)$および
+      $V\times_U S_2\in\Cov(V)\hspace{0.5em}(\forall V\in S_1)$
+      を満たせば,
+      \\
+      $S_2\in\Cov(U)$である.
+  \end{enumerate}
+\end{dfn}
+
+$S\in\Cov(U)$を$U$の被覆(covering)という.
+景$X$とは,
+圏$\C_X$で,
+有限の積とファイバー積が定義され,
+Grothendieck位相が定められているものを言う.
+
+$\C_X$に終対象が存在する場合は,
+$\C_X$を$X$と書くことにする.
+
+\begin{dfn}
+  $X, Y$を景とする.
+  \begin{enumerate}[(i)]
+    \item 関手$f^t:\C_Y\to\C_X$が連続(continuous)とは,
+      次の2条件が満たされることを言う.
+      \begin{enumerate}[(1)]
+        \item ファイバー積と可換である,
+
+          i.e. 任意の射$V\to U,\,W\to U$に対して,
+          \begin{tikzcd}[column sep=1.5em]
+            f^t(V\times_U W)\ar[r,"\sim"]
+            & f^t(V)\times_{f^t(U)} f^t(W)
+          \end{tikzcd}である.
+        \item 任意の$V\in\C_Y$, $S\in\Cov(V)$に対し,
+          $f^t(S)\in\Cov(f^t(V))$である.
+
+          ただし, 
+          $f^t(S)\coloneqq
+          \left\{
+            f^t(W)\to f^t(V)
+            \relmiddle{|}
+            W\in S
+            \right\}$とする.
+      \end{enumerate}
+    \item 景の間の射$f:X\to Y$とは,
+      連続な関手$f^t:\C_Y\to\C_X$である.
+  \end{enumerate}
+\end{dfn}
+
+\begin{eg}
+  \begin{enumerate}[(i)]
+    \item 位相空間$X$に対して,
+      $X$の開集合に包含射で順序を付けた圏を$\Op(X)$とする.
+      $U\in\Op(X)$に対して, $\Op(X)_U = \Op(U)$である.
+      通常の被覆でGrothedieck位相を入れた景を,
+      $X$と書く(終対象は$X\in\Op(X)$).
+    \item $f:X\to Y$を位相空間の間の連続写像とする.
+      関手$f^t:\Op(Y)\to\Op(X)$を$V\mapsto f^{-1}(V)$として,
+      景の間の射も$f:X\to Y$と書ける.
+      つまり, 位相空間を景とすると,
+      連続写像が景の間の関手となる
+      ($f^{-1}(V\cap W)=f^{-1}(V)\cap f^{-1}(W)$).
+    \item $X$を位相空間とする.
+      $\Op(X)$には, 次のような位相も入る.
+      $S\subset \Op(U)$は,
+      $U$の被覆で, 有限部分被覆を持つとする.
+      このような被覆の集合は, Grothendieck位相となる.
+      この景を$X_f$と書く.
+    \item $X$を局所コンパクトな位相空間とする.
+      $X_{lf}$を, $\Op(X)$に次のような位相を入れた景とする:
+      $S\subset\Op(X)$が$X_{lf}$での被覆であるとは,
+      $X$の任意のコンパクト集合$K$に対して,
+      ある$S_0\in S$で,
+      $K\cap (\cup_{V\in S_0} V) = K\cap U$
+      となるものが存在する.
+
+      このとき, 自然な射$U_{lf}\to U_{X_{lf}}$が存在するが,
+      一般には同型でない事に注意する.
+  \end{enumerate}
+\end{eg}
+
+\begin{dfn}
+  $X$を景とする.
+\end{dfn}
+\end{document}
