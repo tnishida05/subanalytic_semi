@@ -15,6 +15,9 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage{subfiles}
+
+\usepackage{comment}
+
 \usepackage{url}
 \usepackage[dvipdfmx]{hyperref}
 \usepackage{pxjahyper}
@@ -23,8 +26,8 @@
   bookmarksnumbered=true,
   bookmarksopen=true,
   colorlinks=true,
-  linkcolor=blue,
-  citecolor=red,
+  %linkcolor=blue,
+  %citecolor=red,
 }
 
 \usepackage{pxrubrica}
@@ -95,6 +98,7 @@
 \newcommand{\Cov}{\mathrm{Cov}}
 \newcommand{\id}{\mathrm{id}}
 
+\newcommand{\Psh}{\mathrm{Psh}}
 \newcommand{\Mod}{\mathrm{Mod}}
 
 \renewcommand{\Re}{\mathrm{Re}}
@@ -125,11 +129,14 @@
 
 \newcommand{\Log}{\mathrm{Log}\,}
 
+\newcommand{\ssubset}{\subset\subset}
 \newcommand{\restr}[2]{\left.#1\right|_{#2}}
 \newcommand{\cl}[1]{{\overline{#1}}}
 
 \def\i<#1>{\langle #1 \rangle}
 \def\I<#1>{\left\langle #1 \right\rangle}
+
+\newcommand{\dprime}{{\prime\prime}}
 
 \newcommand{\relmiddle}[1]{\mathrel{}\middle#1\mathrel{}}
 

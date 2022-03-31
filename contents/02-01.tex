@@ -152,11 +152,59 @@ $\C_X$を$X$と書くことにする.
   \end{enumerate}
 \end{eg}
 
+$k$-加群の層を定義する.
+ここで, $k$は, 可換環とする.
 \begin{dfn}
   $X$を景とする.
   \begin{enumerate}[(i)]
-    \item $F$が$X$上の$k$加群の前層(presheaf)とは,
-      $\C^{\op}_X \to \Mod(k)$
+    \item $F$が$X$上の$k$-加群の前層(presheaf)とは,
+      関手$\C^{\op}_X \to \Mod(k)$であり,
+      前層の間の射は関手の射として定める.
+    \item $\Psh(k_X)$を$X$上の$k$-加群の前層の圏とする.
+      この圏はアーベル圏である.
+    \item $X$上の$k$-加群の前層$F$と$S\subset \C_U$に対して,
+      \[
+        F(S) \coloneqq
+        \Ker\left( \prod_{V\in S}F(V)
+        \rightrightarrows
+        \prod_{V^\prime,V^\dprime\in S}F(V^\prime \times_U V^\dprime)\right)
+      \]
+      と定める.
+      (ただし, 二重矢印の核は, 2つの射の差で定義される.
+      ここでの2つの射は,
+      \\
+      $F(V^\prime) \to F(V^\prime \times_U V^\dprime)$
+      と$F(V^\prime) \to F(V^\prime \times_U V^\dprime)$である.)
+    \item $X$上の$k$-加群の前層$F$が分離的(separated) (resp. 層(sheaf)である)とは,
+      任意の$U\in\C_X$と任意の被覆$X\in\Cov(U)$に対して,
+      自然な射$F(U)\to F(S)$がmonomorphism(resp. isomorphism)となることである.
+    \item $\Mod(k_X)$を$X$上の$k$-加群の層の圏とする.
+      $\Mod(k_X)$は, $\Psh(k_X)$の加法的な充満部分圏(full additive subcategory)である.
+      また, $\Hom_{\Mod(k_X)}$を$\Hom_{k_X}$と略記する.
   \end{enumerate}
 \end{dfn}
+
+\begin{dfn}[層化(sheafification)]
+  \[
+    F^+(U) \coloneqq
+    \ilim[S\in\Cov(U)] F(S).
+  \]
+\end{dfn}
+
+\begin{thm}
+  \begin{enumerate}[(i)]
+    \item 関手${(\cdot)}^+ : \Psh(k_X)\to\Psh(k_X)$は, 左完全である.
+    \item 任意の$F\in\Psh(k_X)$に対して, $F^+$は分離的な前層となる.
+    \item 任意の分離的前層$F$に対して, $F^+$は層となる.
+    \item 関手${(\cdot)}^{++} : \Psh(k_X)\to\Mod(k_X)$は,
+      埋め込み関手$\iota : \Mod(k_X)\to\Psh(k_X)$の左随伴である.
+  \end{enumerate}
+\end{thm}
+(\rnum{4})は, $\iota$を省いて, 次のように書かれることも多い:
+\[
+  \Hom_{\Psh(k_X)}(F,G)
+  \simeq
+  \Hom_{\Mod(k_X)}(F^{++},G)
+  \,\,(F\in\Psh(k_X),\,G\in\Mod(k_X)).
+\]
 \end{document}
