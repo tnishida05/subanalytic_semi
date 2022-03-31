@@ -3,7 +3,13 @@
 \begin{document}
 \setcounter{section}{2}
 \setcounter{subsection}{1} \addtocounter{subsection}{-1}
-\subsection{Definition of Sites}
+\subsection{Sites and sheaves}
+この節では,
+Kashiwara-Schapira, Ind-sheaves \cite{book:KS_ind}
+も合わせて参照して,
+景(site)上の層について述べる.
+
+\vspace{0.5em}
 層は, 位相空間$X$の開集合の圏$\Op(X)$に対して定められる.
 景(site)とは, 任意の圏に対して抽象的な被覆によって位相を入れたもので,
 これにより, 層の概念を拡張できる.
@@ -141,15 +147,39 @@ $\C_X$を$X$と書くことにする.
       この景を$X_f$と書く.
     \item $X$を局所コンパクトな位相空間とする.
       $X_{lf}$を, $\Op(X)$に次のような位相を入れた景とする:
+
       $S\subset\Op(X)$が$X_{lf}$での被覆であるとは,
       $X$の任意のコンパクト集合$K$に対して,
-      ある$S_0\in S$で,
+      ある有限進ん集合$S_0\subset S$で,
       $K\cap (\cup_{V\in S_0} V) = K\cap U$
       となるものが存在する.
 
       このとき, 自然な射$U_{lf}\to U_{X_{lf}}$が存在するが,
       一般には同型でない事に注意する.
   \end{enumerate}
+\end{eg}
+
+\begin{dfn}[subanalytic site]
+  $\Op(X_{sa})$を$X$のsubanalyticな部分集合の圏とする.
+  この圏には, 次のような位相が入る:
+
+  $S\subset\Op(X)$が$U\in\Op(X_{sa})$の被覆であるとは,
+  $X$の任意のコンパクト集合$K$に対して,
+  ある有限部分集合$S_0\subset S$で,
+  $K\cap (\cup_{V\in S_0} V) = K\cap U$
+  となるものが存在する.
+
+  このような$X_{sa}$をsubanalytic siteと言う.
+  また, $U_{X_{sa}}$を,
+  $\Op(X_{sa})\cap U$に$X_{sa}$の位相から誘導される位相を入れたものとする.
+  一般に, $U_{sa}$と$U_{X_{sa}}$は異なる.
+\end{dfn}
+
+\begin{eg}
+  $X = \mathbb{R}^2$, $U = \mathbb{R}^2\setminus\{0\}$とする.
+  このとき, $V_n = \left\{ x\in\mathbb{R}^2 \relmiddle |x|>\frac{1}{n} \right\}$とすると,
+  $\{V_n\}_{n\in\mathbb{N}}\in\Cov(U_{sa})$であるが,
+  $\{V_n\}_{n\in\mathbb{N}}\not\in\Cov(U_{X_{sa}})$である.
 \end{eg}
 
 $k$-加群の層を定義する.
