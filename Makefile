@@ -1,8 +1,8 @@
 out.pdf: $(wildcard *.tex) $(wildcard contents/*.tex) $(wildcard *.sty) $(wildcard *.bib)
-	platex main.tex
+	uplatex main.tex
 	pbibtex main.aux
-	platex main.tex
-	platex main.tex
+	uplatex main.tex
+	uplatex main.tex
 	dvipdfmx -o out.pdf main.dvi
 	$(RM) main.[!t]* main.t[!e]*
 
