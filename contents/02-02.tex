@@ -26,4 +26,145 @@
   $\{V_n\}_{n\in\mathbb{N}}\in\Cov(U_{sa})$であるが,
   $\{V_n\}_{n\in\mathbb{N}}\not\in\Cov(U_{X_{sa}})$である.
 \end{eg}
+
+\begin{dfn}
+  $\Mod(k_{X_{sa}})$を$X_{sa}$上の層の圏とする.
+\end{dfn}
+
+\begin{dfn}
+  $\Op^c(X_{sa})$で,
+  $X$の相対コンパクトなsubanalytic開集合のなす圏とし,
+  $X_{sa}$から誘導される位相を入れたものを$X_{sa}^c$と書く.
+  $X_{sa}^c$上の前層(resp. 層)の圏を
+  $\Psh(k_{X_{sa}^c})$(resp. $\Mod(k_{X_{sa}^c})$)と書く.
+\end{dfn}
+
+\begin{prop}
+  $\Mod(k_{X_{sa}})$は, Grothendieck圏である
+  i.e.
+  生成元を持ち,
+  small inductive limits と
+  small filtrant inductive limits が完全となる圏である.
+  特に, Grothendieck圏として,
+  $\Mod(k_{X_{sa}})$は, enough injectiveな対象を持つ.
+\end{prop}
+
+\begin{prop}
+  忘却関手$\Mod(k_{X_{sa}})\to\Mod(k_{X_{sa}^c})$は
+  圏同値を与える.
+\end{prop}
+\begin{proof}
+\end{proof}
+
+\begin{prop}
+  $\{F_i\}_{i\in I}$を
+  $\Mod(k_{X_{sa}})$のfilitrant inductive systemとし,
+  $U\in\Op^c(X_{sa})$とする.
+  このとき,
+  \[
+    \ilim[i\in I] \Gamma(U ; F_i)
+    \simeq
+    \Gamma(U ; \ilim[i\in I] F_i)
+  \]
+  が成り立つ.
+\end{prop}
+\begin{proof}
+  $\Mod(k_{X_{sa}^c})$で示せば十分である.
+  $\iilim[i] F_i$で, 
+  $X_{sa}^c$上の前層
+  $V\mapsto \ilim[i] \Gamma(U;F_i) = \ilim[i] ( F_i(U) )$を表す.
+  $U\in\Op^c(X_{sa})$とし,
+  $S$を$U$の有限被覆とする.
+  同型
+  $(\iilim[i] F_i)(S) \to \ilim[i] ( F_i(S) ) $
+  が存在し,
+  $F_i\in\Mod(k_{X_{sa}^c})$より,
+  $(\iilim[i] F_i)(S) \simeq \ilim[i] ( F_i(U) ) =  (\iilim[i] F_i)(U)$
+  が成り立つ.
+
+  ここで, $U$の有限被覆の族$\Cov^f(U)$は, $\Cov(U)$でcofinalなので,
+  $
+  \iilim[i] F_i
+  \simeq \ilim[S\in\Cov^f(U)] (\iilim[i]F_i)(S)
+  \simeq \ilim[S\in\Cov(U)] (\iilim[i]F_i)(S)
+  = (\iilim[i] F_i)^+
+  $
+  となる.
+  よって,
+  \[
+    \begin{tikzcd}
+      \iilim[i] F_i \ar[r,"\sim"]
+      & (\iilim[i] F_i)^+ \ar[r,"\sim"]
+      & (\iilim[i] F_i)^{++}
+    \end{tikzcd}
+  \]
+  を得る.
+  また, 層$\ilim[i] F_i$の定義より,
+  $(\iilim[i] F_i)^{++}=\ilim[i] F_i$なので,
+  $\iilim[i] F_i = \ilim[i] F_i$が言える.
+  これに$\Gamma(U;\bullet)$を施せば,
+  $\ilim[i]\Gamma(U;F_i) \simeq \Gamma(U;\ilim[i]F_i)$となる.
+\end{proof}
+
+\begin{prop}
+  $F\in\Psh(X_{sa}^c)$が, 次の2条件を満たすとする.
+  \begin{enumerate}[(i)]
+    \item $F(\emptyset)=0$,
+    \item 任意の$U,V\in\Op^c(X_{sa})$に対して,
+      \[
+        \begin{tikzcd}
+          0 \ar[r]
+          & F(U \cup V) \ar[r]
+          & F(U) \oplus F(V) \ar[r]
+          & F(U \cap V)
+        \end{tikzcd}
+      \]
+      は完全列である.
+  \end{enumerate}
+  このとき,
+  $F\in\Mod(k_{X_{sa}^c})\simeq\Mod(k_{X_{sa}})$である.
+\end{prop}
+\begin{proof}
+  $U\in\Op^c(X_{sa})$と$U$の有限被覆$\{U_j\}_{j=1}^{n}$とする.
+  また, $U_{ij} = U_i \cap U_j$と略記する.
+  次の列が完全であることを示せば良い.
+  \[
+    \begin{tikzcd}
+      0 \ar[r]
+      & F(U) \ar[r]
+      & \bigoplus_{1 \leq k \leq n} F(U_k) \ar[r]
+      & \bigoplus_{1 \leq i < j \leq n} F(U_{ij})
+    \end{tikzcd}.
+  \]
+  ただし, 2番目の射は,
+  $(s_k)_{1 \leq k \leq n}$を,
+  $(\restr{s_i}{U_{ij}}-\restr{s_j}{U_{ij}})_{1 \leq i < j \leq n}$
+  に対応させる射である.
+
+  $n$についての帰納法で示す.
+  $n=1$は明らかで, $n=2$は仮定の(\rnum{2})そのものである.
+  $1 \leq j \leq n-1$では成り立つと仮定する.
+  また, $U^\prime = \bigcup_{1\leq k \leq n-1} U_k$と略記する.
+  このとき, 帰納法の仮定から, 完全列による可換図式
+  \[
+    \begin{tikzcd}
+      && 0 \ar[d] & 0 \ar[d]
+      \\
+      0 \ar[r]
+      & F(U) \ar[r]
+      & F(U^\prime) \oplus F(U_n) \ar[r] \ar[d]
+      & F(U^\prime\cap U_n) \ar[d]
+      \\
+      &
+      & \bigoplus_{1 \leq k \leq n-1} F(U_k) \oplus F(U_n) \ar[r] \ar[d]
+      & \bigoplus_{1 \leq i \leq n-1} F(U_{in})
+      \\
+      &
+      & \bigoplus_{1 \leq i < j \leq n-1} F(U_{ij})
+      &
+    \end{tikzcd}
+  \]
+  を得る.
+  この図式で diagram chasing を行えば, 目的の結果を得る.
+\end{proof}
 \end{document}
