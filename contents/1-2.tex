@@ -1,7 +1,7 @@
 \documentclass[../main]{subfiles}
 
 \begin{document}
-\setcounter{section}{2}
+\setcounter{section}{1}
 \setcounter{subsection}{2} \addtocounter{subsection}{-1}
 \subsection{Subanalytic sites and sheaves}
 \begin{dfn}[subanalytic site]
@@ -84,10 +84,10 @@
 
   ここで, $U$の有限被覆の族$\Cov^f(U)$は, $\Cov(U)$でcofinalなので,
   $
-  \iilim[i] F_i
+  (\iilim[i] F_i)(U)
   \simeq \ilim[S\in\Cov^f(U)] (\iilim[i]F_i)(S)
   \simeq \ilim[S\in\Cov(U)] (\iilim[i]F_i)(S)
-  = (\iilim[i] F_i)^+
+  = (\iilim[i] F_i)^+(U)
   $
   となる.
   よって,
@@ -167,4 +167,6 @@
   を得る.
   この図式で diagram chasing を行えば, 目的の結果を得る.
 \end{proof}
+
+ここで, $\mathbb{R}$-constructible
 \end{document}
