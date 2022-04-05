@@ -1,0 +1,202 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\setcounter{section}{1}
+\setcounter{subsection}{3} \addtocounter{subsection}{-1}
+\subsection{Sheaves on sites and $\mathbb{R}$-constructible sheaves}
+$\Mod_{\Rc}(k_X)$を$X$上の$\mathbb{R}$-constructibleな層の成すアーベル圏とする.
+また, $\mathbb{R}$-constructibleで, 台がコンパクトな層は, その部分圏となり,
+$\Mod_{\Rc}^c(k_X)$と書く.
+\[
+  \Mod_{\Rc}^c(k_X)
+  \subset
+  \Mod_{\Rc}(k_X)
+  \subset
+  \Mod(k_X)
+\]
+である.
+
+site間の自然な射
+\[
+  \rho : X \to X_{sa}
+\]
+が定まり, 次のような層の射$\rho_\ast$, $\rho^{-1}$が取れる.
+\[
+  \begin{tikzcd}
+    \Mod(k_X) \ar[r,"\rho_\ast",yshift=0.7pt]
+    & \Mod(k_{X_{sa}}) \ar[l,"\rho^{-1}",yshift=-0.7ex]
+  \end{tikzcd}.
+\]
+
+$\rho_\ast$を$\Mod_{\Rc}(k_X)$及び$\Mod_{\Rc}^c(k_X)$に制限したものも,
+$\rho_\ast$と書くこととする.
+
+\begin{rem}
+  任意の$F\in\Mod(k_X)$と$V\in\Op^c(X_{sa})$に対して,
+  \[
+    \Gamma(V;\rho_\ast)
+    \simeq
+    \ilim[U] \Gamma(V;\rho_\ast F_U)
+    \simeq
+    \Gamma(V;\ilim[U]\rho_\ast F_U)
+  \]
+  が成り立つ($U$は$X$の相対コンパクトなsubanalytic開集合を動く).
+  つまり,
+  \begin{tikzcd}[column sep=1.5em]
+    \ilim[U] \rho_\ast F_U \ar[r,"\sim"]
+    & \rho_\ast F
+  \end{tikzcd}
+  である.
+\end{rem}
+\begin{proof}
+  $V\subset U$ならば,
+  $\Gamma(V;\rho_\ast F_U)\simeq\Gamma(V;\rho_\ast F)$
+  であることから分かる.
+\end{proof}
+
+\begin{rem}
+  関手$\rho_\ast$はfiltrant inductive limitsと可換でない.
+\end{rem}
+\begin{proof}
+  $V_n=\left\{ x\in\mathbb{R}^2 \relmiddle{|} |x|>\frac{1}{n} \right\}$
+  とすると,
+  $\rho_\ast \ilim[n] k_{V_n} \simeq \rho_\ast k_{\mathbb{R}^2\setminus\{0\}}$
+  であるが,
+  $0\in \partial U$なる$U\in\Op^c(\mathbb{R}^2_{sa}$に対して,
+  $\Gamma(U;\ilim[n]\rho_\ast k_{V_n})
+  \simeq\ilim[n]\Gamma(U;\rho_\ast k_{V_n}) = 0$となる.
+\end{proof}
+
+\begin{prop}
+  $U\in\Op(X_{sa})$, $k_{U_{sa}}\in\Mod(k_{X_{sa}})$をとる.
+  このとき,
+  $k_{U_{sa}} \simeq \rho_\ast k_U$である.
+\end{prop}
+\begin{proof}
+  $F\in\Psh(k_{X_{sa}})$を, $V\subset U$のとき$F(V)=k$
+  \[
+    F(V)=\begin{cases}
+      k & (V\subset U),\\
+      0 & (otherwise),
+    \end{cases}
+  \]
+  と定める. これは, separatedであり, $k_{U_{sa}} = F^{++}$である.
+  さらに, $V\in\Op(X_{sa})$に対して,
+  埋め込み$F(V)\to\rho_\ast k_U(V)$となるように射を作れる.
+  $(\bullet)^{++}$は完全関手なので, monomorphism $F^{++}\to\rho_\ast k_U$を作れる.
+  よって, epimorphismであることを示せば良い.
+  これは, 次に紹介する命題を用いれば, 次のように示せる.
+
+  $\{U_\lambda\}_{\lambda\in\Lambda}$を$U$の連結成分の族とする.
+  \[
+    \mathcal{T} \coloneqq \left\{
+      W\in\Op(X_{sa})
+      \relmiddle{|}
+      \begin{array}{l}
+        W : \mbox{連結},\\
+        W\cap U_\lambda^c = \emptyset \  (\forall \lambda \in \Lambda)
+      \end{array}
+      \right\}
+  \]
+  と定めれば,
+  $\{U_\lambda\}_\lambda$が局所有限であることから,
+  $\mathcal{T}$は, $X_{sa}$の位相の基底(basis for the topology of $X$)となる.
+  各$W\in\mathcal{T}$に対して,
+  \[
+    F(W) \simeq \rho_\ast k_U(W)
+    = \begin{cases}
+      k & (W\subset U),\\
+      0 & (otherwise),
+    \end{cases}
+  \]
+  となる. よって, $F^{++}\simeq \rho_\ast k_U$となる.
+\end{proof}
+\begin{prop}
+  $F,G\in\Mod(k_{X_{sa}})$とする.
+  \begin{align*}
+    &\mbox{$\varphi\in\Hom_{k_{X_{sa}}}(F,G)$が epimorphism である}
+    \\
+    \iff&
+    \forall V\in\Op(X_{sa}),\,\exists\{V_i\}_{i\in I}\in\Cov(V)
+    \,\mathrm{s.t.}\,
+    \left[
+      \forall s\in G(V), \exists t_i\in F(V_i)
+      \,\mathrm{s.t.}\, \varphi(t_i)=\restr{s}{V_i}\,(i\in I)
+      \right]
+  \end{align*}
+  であることは同値である.
+\end{prop}
+\begin{proof}
+  証明は参考文献のどれにも書いていないような気がするので略.
+\end{proof}
+
+今回のセミナーでは,
+$\mathcal{T}$が任意の$V\in\Op(X_{sa})$の($X_{sa}$の位相での)被覆となれば,
+命題の被覆を$\mathcal{T}$とすれば良いので, これを示した.
+$X_{sa}$の位相で基底となると言うのは, おそらく, そのような事実から示せると思われる.
+\begin{rem*}[``基底になる''を無視した証明]
+  $\mathcal{T}$は,
+  $\{U_\lambda\}$の局所有限性と$X$が実解析的多様体である事実から,
+  (相対コンパクトな)開集合からなる$X$の(通常の位相の)被覆を含むことが示せる.
+  これが示せると,
+  任意の$V\in\Op(X_{sa})$に対し,
+  $\mathcal{T}\cap V$が$X_{sa}$の被覆となることが,
+  次のように示せる.
+
+  任意の$V\in\Op(X_{sa})$, コンパクト集合$K\subset X$をとる.
+  $K\cap \cl{V}$がコンパクトであり,
+  $\mathcal{T}$が$X$の被覆なので,
+  有限部分集合$\mathcal{T}_0\subset\mathcal{T}$で,
+  $K\cap \cl{V}$の被覆となるものが存在する.
+  このとき, $S_0 = \mathcal{T}_0\cap V$とすれば,
+  $K\cap\bigcup_{W\in S_0}W = K\cap V$が成り立つ.
+
+  ($K\cap\bigcup_{W^\prime \in \mathcal{T}_0}W^\prime \supset K\cap \cl{V}$ と
+  $\bigcup_{W^\prime \in \mathcal{T}_0}(W^\prime\cap V) \subset V$より
+  $K\cap\bigcup_{W\in S_0}W = K\cap V$である.)
+\end{rem*}
+\begin{rem*}[$\mathcal{T}$が$X$の被覆であること]
+  任意の点$x\in X$に対して,
+  十分小さい相対コンパクトなsubanalytic開近傍$W$を取る.
+  このような近傍は, 例えば,
+  $W$をある座標近傍の中に入るように作ればユークリッド空間で考えて良く,
+  semi-analytic 開集合である開球を取れば簡単に作れる(同相写像で戻す).
+
+  ここで, $\cl{W}$はコンパクトであり,
+  $U$の連結成分$\{U_\lambda\}$は局所有限なので,
+  $W$と有限枚しか交わらない.
+
+  $W$と交わる連結成分$\{U_i\}_{i\,:\,\mathrm{finite}}$から,
+  $x$とは異なる点$u_i\in U_i$を代表点として取る
+  ($x\in (U_i)^c$なら$W\cap U_i\neq\emptyset$より必ず取れて,
+  $x\in U_i$の場合も$X$が多様体なので取れる).
+
+  選んだ有限個の代表点$u_i$と$x$の最小距離$r = \min_i \dist(u_i,x)$を考える
+  (ユークリッド空間で考えても良いし計量を入れても良い).
+  そこで, $r$以下の半径を持つ$x$中心の円を$W$として取り直す.
+
+  $W$は連結で, 相対コンパクトなsubanalytic開集合となっており,
+  未だ交わっている可能性のある$U$の連結成分に関しても,
+  選んだ代表点は含まれていないので,
+  完全には含んでいない.
+
+  よって, $W\in\mathcal{T}$であり,
+  各点$x$に対してこのような$W_x$を取れば,
+  $X$の被覆となることが示せる.
+\end{rem*}
+
+証明を作る際, 間違いを起こしたのでメモしておく.
+大したことは言ってないので読み飛ばし推奨.
+\begin{memo*}
+  $W$に含まれている$U_i$の閉包を除けば, 有限枚の開集合の共通部分となり, 開集合になるが,
+  連結でなくなる例を簡単に作れる(半径$2$の円の中に, $2$つの半径$1$の円を, 内接するように書く).
+
+  また, 点$x$に対して, $\min_i \dist(x,U_i)$とするのは,
+  $x\in\cl{U_i}$のときに$0$となるので注意が必要である.
+
+  $x\in\cl{U_i}$を場合分けして考えると,
+  $W$が$U_i$を含んでいないか考える必要があり,
+  結局, $x$と異なる$U_i$の点を,
+  (実数の連続性から?)取る必要が出てくる.
+\end{memo*}
+\end{document}
